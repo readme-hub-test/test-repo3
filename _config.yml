@@ -1,0 +1,8 @@
+title: Organization READMEs
+theme: minima
+plugins:
+  - jekyll-include-cache
+exclude:
+  - .github
+  - README.md
+  - LICENSE
