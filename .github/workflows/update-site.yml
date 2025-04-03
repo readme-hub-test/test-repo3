@@ -28,11 +28,10 @@ jobs:
           mkdir -p _includes
           echo "Fetching repositories..."
           gh repo list YOUR_ORG --json name -q '.[].name' > repos.txt
-
+      
           while read repo; do
             echo "Fetching README from $repo..."
-            gh repo view YOUR_ORG/$repo --json description -q '.description' > _includes/$repo.md || echo "# $repo" > _includes/$repo.md
-            gh api repos/YOUR_ORG/$repo/readme --header "Accept: application/vnd.github.raw" >> _includes/$repo.md || echo "No README found" >> _includes/$repo.md
+            gh api repos/YOUR_ORG/$repo/readme --header "Accept: application/vnd.github.raw" > _includes/$repo.md || echo "No README found" > _includes/$repo.md
           done < repos.txt
 
       - name: Commit and Push Changes
