@@ -22,8 +22,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh auth status
-
+      
       - name: Fetch READMEs from All Repos
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p _includes
           echo "Fetching repositories..."
